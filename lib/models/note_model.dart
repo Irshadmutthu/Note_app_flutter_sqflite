@@ -14,7 +14,7 @@ class NotesModel {
       "id": id,
       "title": title,
       "body": body,
-      "creationdate": creationdate
+      "creationdate": creationdate.toString()
     };
   }
 }

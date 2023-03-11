@@ -38,4 +38,9 @@ CREATE TABLE notes(id INTEGER PRIMARY KEY AUTOINCREMENT,title TEXT,body TEXT,cre
     maplist = await db!.query("notes");
     return maplist;
   }
+
+  deletNote(int id) async {
+    final db = await getdatabase;
+    db!.delete("notes", where: "id = ?", whereArgs: [id]);
+  }
 }

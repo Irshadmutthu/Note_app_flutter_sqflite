@@ -29,12 +29,32 @@ class Homepage extends StatelessWidget {
                     itemBuilder: (context, index) {
                       String title = noteData.data![index]['title'];
                       String body = noteData.data![index]['body'];
+                      int id = noteData.data![index]["id"];
                       String creationdate =
                           noteData.data![index]['creationdate'];
 
                       return Card(
-                        child:
-                            ListTile(title: Text(title), subtitle: Text(body)),
+                        child: ListTile(
+                          title: Text(title),
+                          subtitle: Text(body),
+                          trailing: SizedBox(
+                            width: 100,
+                            child: Row(
+                              children: [
+                                IconButton(
+                                    onPressed: () {
+                                      DatabaseProvider.db.deletNote(id);
+                                      Navigator.pushNamedAndRemoveUntil(
+                                          context, "home", (route) => false);
+                                    },
+                                    icon: const Icon(Icons.delete)),
+                                IconButton(
+                                    onPressed: () {},
+                                    icon: const Icon(Icons.edit))
+                              ],
+                            ),
+                          ),
+                        ),
                       );
                     },
                     itemCount: noteData.data!.length);
