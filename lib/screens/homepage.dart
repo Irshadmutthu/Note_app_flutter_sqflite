@@ -42,6 +42,12 @@ class Homepage extends StatelessWidget {
             }
             return Container();
           }),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.pushNamed(context, "addnote");
+        },
+        child: const Icon(Icons.note_add),
+      ),
     );
   }
 }

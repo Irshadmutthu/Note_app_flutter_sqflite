@@ -21,6 +21,7 @@ class DatabaseProvider {
         onCreate: (db, version) async {
       await db.execute('''
 CREATE TABLE notes(id INTEGER PRIMARY KEY AUTOINCREMENT,title TEXT,body TEXT,creationdate DATE)
+
 ''');
     }, version: 1);
   }
