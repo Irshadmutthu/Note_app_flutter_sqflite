@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 
 class Addnote extends StatefulWidget {
   const Addnote({super.key});
@@ -23,16 +21,30 @@ class _AddnoteState extends State<Addnote> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
+            const Text(
               "Title",
               style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
-            TextField(controller: bodycontroller),
-            SizedBox(
+            TextField(
+              controller: titleController,
+              keyboardType: TextInputType.multiline,
+              maxLines: null,
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            const Text(" Body",
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+            TextField(
+              controller: bodycontroller,
+              maxLines: null,
+            ),
+            const SizedBox(
               height: 10,
             ),
-            Text(" Body",
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+            Center(
+                child:
+                    ElevatedButton(onPressed: () {}, child: Text("Add note")))
           ],
         ),
       ),
