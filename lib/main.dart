@@ -13,10 +13,10 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       initialRoute: "home",
       routes: {
-        "home": (context) => const Homepage(),
+        "home": (context) =>  Homepage(),
         "addnote": (context) => const Addnote(),
       },
-      home: const Homepage(),
+      home:  Homepage(),
     );
   }
 }
