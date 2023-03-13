@@ -49,7 +49,15 @@ class Homepage extends StatelessWidget {
                                     },
                                     icon: const Icon(Icons.delete)),
                                 IconButton(
-                                    onPressed: () {},
+                                    onPressed: () {
+                                      Navigator.pushNamed(context, "addnote",
+                                          arguments: {
+                                            "name": "updateNote",
+                                            "title": title,
+                                            "body": body,
+                                            "id": id
+                                          });
+                                    },
                                     icon: const Icon(Icons.edit))
                               ],
                             ),

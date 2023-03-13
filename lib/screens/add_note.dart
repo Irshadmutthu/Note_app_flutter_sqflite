@@ -22,15 +22,34 @@ class _AddnoteState extends State<Addnote> {
     }
   }
 
+  updateNote(NotesModel notesModel) {
+    try {
+      DatabaseProvider.db.updateNote(notesModel);
+    } catch (error) {
+      ScaffoldMessenger.of(context)
+          .showSnackBar(SnackBar(content: Text(error.toString())));
+    }
+  }
+
   TextEditingController titleController = TextEditingController();
   TextEditingController bodycontroller = TextEditingController();
   String title = '';
   String body = '';
+  String name = '';
+  int? id;
   @override
   Widget build(BuildContext context) {
+    final args =
+        ModalRoute.of(context)!.settings.arguments as Map<String, dynamic>;
+    title = args["title"].toString();
+    body = args["body"].toString();
+    name = args["name"].toString();
+    titleController.text = title;
+    bodycontroller.text = body;
+    id = args["id"];
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Add Note"),
+        title: name.isEmpty ? const Text("Add note") : const Text("Updat Note"),
       ),
       body: Padding(
         padding: const EdgeInsets.all(20),
@@ -67,10 +86,19 @@ class _AddnoteState extends State<Addnote> {
                       });
                       if (titleController.text.isNotEmpty &&
                           bodycontroller.text.isNotEmpty) {
-                        addnote(NotesModel(
-                            title: title,
-                            body: body,
-                            creationdate: DateTime.now()));
+                        if (name.isEmpty) {
+                          addnote(NotesModel(
+                              title: title,
+                              body: body,
+                              creationdate: DateTime.now()));
+                        } else {
+                          updateNote(NotesModel(
+                              id: id,
+                              title: title,
+                              body: body,
+                              creationdate: DateTime.now()));
+                        }
+
                         Navigator.pop(context);
                         Navigator.pushNamed(context, "home");
                       } else {
@@ -80,7 +108,9 @@ class _AddnoteState extends State<Addnote> {
                                     Text("Enter title and body to continue")));
                       }
                     },
-                    child: const Text("Add note")))
+                    child: name.isEmpty
+                        ? const Text("Add note")
+                        : const Text("Update Note")))
           ],
         ),
       ),

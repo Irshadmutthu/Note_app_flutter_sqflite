@@ -43,4 +43,12 @@ CREATE TABLE notes(id INTEGER PRIMARY KEY AUTOINCREMENT,title TEXT,body TEXT,cre
     final db = await getdatabase;
     db!.delete("notes", where: "id = ?", whereArgs: [id]);
   }
+
+  updateNote(NotesModel note) async {
+    final db = await getdatabase;
+    db!.update("notes", note.toMap(),
+        where: "id = ?",
+        whereArgs: [note.id],
+        conflictAlgorithm: ConflictAlgorithm.replace);
+  }
 }
