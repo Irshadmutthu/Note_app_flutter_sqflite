@@ -11,7 +11,7 @@ class Homepage extends StatelessWidget {
     return notes;
   }
 
-  List<Color> _colors = [
+  final List<Color> _colors = [
     Colors.red,
     Colors.blue,
     Colors.green,
@@ -114,7 +114,7 @@ class Homepage extends StatelessWidget {
           }),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          Navigator.pushNamed(context, "addnote");
+          Navigator.pushNamed(context, "addnote", arguments: {});
         },
         child: const Icon(Icons.note_add),
       ),

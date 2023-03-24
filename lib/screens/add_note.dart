@@ -40,16 +40,16 @@ class _AddnoteState extends State<Addnote> {
   @override
   Widget build(BuildContext context) {
     final args =
-        ModalRoute.of(context)!.settings.arguments as Map<String, dynamic>;
-    title = args["title"].toString();
-    body = args["body"].toString();
-    name = args["name"].toString();
+        ModalRoute.of(context)!.settings.arguments as Map<dynamic, dynamic>;
+    title = args["title"] ?? '';
+    body = args["body"] ?? '';
+    name = args["name"] ?? '';
     titleController.text = title;
     bodycontroller.text = body;
     id = args["id"];
     return Scaffold(
       appBar: AppBar(
-        title: name.isEmpty ? const Text("Add note") : const Text("Updat Note"),
+        title: name == '' ? const Text("Add note") : const Text("Updat Note"),
       ),
       body: Padding(
         padding: const EdgeInsets.all(20),

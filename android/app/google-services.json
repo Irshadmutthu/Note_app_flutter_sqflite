@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "978489353241",
+    "project_id": "aminacomedydemo",
+    "storage_bucket": "aminacomedydemo.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:978489353241:android:24c2abad53f01fd7f2f688",
+        "android_client_info": {
+          "package_name": "com.example.note_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "978489353241-j1o0p7k8k9a90u39f7egam98keokpl94.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC9KhSMlu8OYur75GgpwbAmPKtbeabUh9A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "978489353241-j1o0p7k8k9a90u39f7egam98keokpl94.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
